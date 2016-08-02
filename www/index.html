@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
+        authDomain: "roofpik-948d0.firebaseapp.com",
+        databaseURL: "https://roofpik-948d0.firebaseio.com",
+        storageBucket: "roofpik-948d0.appspot.com",
+    };
+    firebase.initializeApp(config);
+    </script>
+</head>
+
+<body ng-app="starter" ng-controller="mainCtrl">
+    <ion-pane>
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Ionic Blank Starter</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list">
+                <label class="item item-input item-select item-light">
+                    <div class="input-label">
+                        Select City
+                    </div>
+                    <select ng-change="selectCity()" ng-model="cityDetails.selectedCity">
+                        <option ng-repeat="city in cities" value="{{city.cityId}}" ng-selected="selectedCity == city.cityId">
+                            {{city.cityName}}
+                        </option>
+                    </select>
+                </label>
+                <label class="item item-input item-select item-stable">
+                    <div class="input-label">
+                        Select zone
+                    </div>
+                    <select ng-change="selectZone()" ng-model="zoneDetails.selectedZone">
+                        <option ng-repeat="zone in zones" value="{{zone.zoneId}}" ng-selected="selectedZone == zone.zoneId">
+                            {{zone.zoneName}}
+                        </option>
+                    </select>
+                </label>
+                <label class="item item-input item-select item-dark">
+                    <div class="input-label">
+                        Select location
+                    </div>
+                    <select ng-change="selectLocation()" ng-model="locationDetails.selectedLocation">
+                        <option ng-repeat="location in locations" value="{{location.locationId}}" ng-selected="selectedLocation == location.locationId">
+                            {{location.locationName}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+        </ion-content>
+    </ion-pane>
+</body>
+
+</html>
